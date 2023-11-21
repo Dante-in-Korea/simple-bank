@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"github.com/stretchr/testify/require"
-	"golang/simple-bank/util"
+	"simple-bank/util"
 	"testing"
 	"time"
 )

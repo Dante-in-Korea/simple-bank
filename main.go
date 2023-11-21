@@ -2,8 +2,8 @@ package main
 
 import (
 	"database/sql"
-	"golang/simple-bank/api"
-	db "golang/simple-bank/db/sqlc"
+	"simple-bank/api"
+	db "simple-bank/db/sqlc"
 	"log"
 	_ "github.com/lib/pq"
 )

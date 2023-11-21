@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	db "golang/simple-bank/db/sqlc"
+	db "simple-bank/db/sqlc"
 )
 
 // Server servers http requests for our banking service
