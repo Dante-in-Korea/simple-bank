@@ -2,10 +2,10 @@ package db
 
 import (
 	"database/sql"
+	"github.com/Dante-in-Korea/simple-bank/util"
 	_ "github.com/lib/pq"
 	"log"
 	"os"
-	"simple-bank/util"
 	"testing"
 )
 

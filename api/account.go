@@ -2,9 +2,9 @@ package api
 
 import (
 	"database/sql"
+	db "github.com/Dante-in-Korea/simple-bank/db/sqlc"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	db "simple-bank/db/sqlc"
 )
 
 type createAccountRequest struct {
@@ -55,6 +55,7 @@ func (server *Server) getAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
+
 	ctx.JSON(http.StatusOK, account)
 }
 
