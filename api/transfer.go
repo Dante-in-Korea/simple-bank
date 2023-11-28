@@ -39,7 +39,6 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
-	fmt.Println("result: ", result)
 	ctx.JSON(http.StatusOK, result)
 }
 
@@ -59,5 +58,5 @@ func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency s
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return false
 	}
-	return false
+	return true
 }
