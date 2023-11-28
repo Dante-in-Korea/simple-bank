@@ -6,10 +6,11 @@ import (
 	"fmt"
 )
 
-type Store interface{
+type Store interface {
 	Querier
 	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error)
 }
+
 // SQLStore provides all functions to execute SQL queries and transactions
 type SQLStore struct {
 	*Queries
@@ -47,10 +48,10 @@ func (store *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) erro
 type TransferTxParams struct {
 	FromAccountID int64 `json:"from_account_id"`
 	ToAccountID   int64 `json:"to_account_id"`
-	Amount       int64 `json:"amount"`
+	Amount        int64 `json:"amount"`
 }
 
-// TransferTxResults the result of the transfer transaction
+// TransferTxResult the result of the transfer transaction
 type TransferTxResult struct {
 	Transfer    Transfer `json:"transfer"`
 	FromAccount Account  `json:"from_account"`
@@ -58,7 +59,6 @@ type TransferTxResult struct {
 	FromEntry   Entry    `json:"from_entry"`
 	ToEntry     Entry    `json:"to_entry"`
 }
-
 
 // TransferTx performs a money transfer from one account to the other
 // It creates a transfer record, add account entries, and update accounts' balance within a single database transaction
@@ -103,8 +103,7 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
 	return result, err
 }
 
-
-func addMoney (
+func addMoney(
 	ctx context.Context,
 	q *Queries,
 	accountID1 int64,
@@ -113,14 +112,14 @@ func addMoney (
 	amount2 int64,
 ) (account1 Account, account2 Account, err error) {
 	account1, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-		ID: accountID1,
+		ID:     accountID1,
 		Amount: amount1,
 	})
 	if err != nil {
 		return account1, account2, err
 	}
 	account2, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-		ID: accountID2,
+		ID:     accountID2,
 		Amount: amount2,
 	})
 	return
