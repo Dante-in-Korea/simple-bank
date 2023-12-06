@@ -107,7 +107,7 @@ func TestCreateUserAPI(t *testing.T) {
 				"username":  user.Username,
 				"password":  password,
 				"full_name": user.FullName,
-				"email":     user.Email,
+				"e mail":    user.Email,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
