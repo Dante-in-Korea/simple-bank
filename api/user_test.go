@@ -107,7 +107,7 @@ func TestCreateUserAPI(t *testing.T) {
 				"username":  user.Username,
 				"password":  password,
 				"full_name": user.FullName,
-				"e mail":    user.Email,
+				"email":     user.Email,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -185,7 +185,7 @@ func TestCreateUserAPI(t *testing.T) {
 			tc.buildStubs(store)
 
 			// start test server and send request
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			// Marshall body data to JSON
