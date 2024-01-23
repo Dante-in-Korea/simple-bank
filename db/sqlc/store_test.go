@@ -42,7 +42,6 @@ func TestTransferTx(t *testing.T) {
 		result := <-results
 		require.NotEmpty(t, result)
 
-
 		// check transfer
 		transfer := result.Transfer
 		require.NotEmpty(t, transfer)
@@ -91,7 +90,7 @@ func TestTransferTx(t *testing.T) {
 		diff2 := toAccount.Balance - account2.Balance
 		require.Equal(t, diff1, diff2)
 		require.True(t, diff1 > 0)
-		require.True(t, diff1%amount == 0 ) // 1 * amount, 2 * amount, 3 * amount, .....,n * amount
+		require.True(t, diff1%amount == 0) // 1 * amount, 2 * amount, 3 * amount, .....,n * amount
 
 		k := int(diff1 / amount)
 		require.True(t, k >= 1 && k <= n)
@@ -126,7 +125,7 @@ func TestTransferTxDeadlock(t *testing.T) {
 		fromAccountID := account1.ID
 		toAccountID := account2.ID
 
-		if i % 2 == 1 {
+		if i%2 == 1 {
 			fromAccountID = account2.ID
 			toAccountID = account1.ID
 		}
